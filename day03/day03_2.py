@@ -17,13 +17,16 @@ co2_ratings = diagnostic_report[:]
 bit_length = len(diagnostic_report[0])
 
 for i in range(bit_length):
-    if len(oxygen_ratings) > 1:
-        most_common_oxygen_bit = most_common_bit_at(oxygen_ratings, i)
-        oxygen_ratings = [r for r in oxygen_ratings if r[i] == most_common_oxygen_bit]
-    
-    if len(co2_ratings) > 1:
-        most_common_co2_bit = most_common_bit_at(co2_ratings, i)
-        co2_ratings = [r for r in co2_ratings if r[i] != most_common_co2_bit]
+    most_common_oxygen_bit = most_common_bit_at(oxygen_ratings, i)
+    oxygen_ratings = [r for r in oxygen_ratings if r[i] == most_common_oxygen_bit]
+    if len(oxygen_ratings) <= 1:
+        break
+
+for i in range(bit_length):
+    most_common_co2_bit = most_common_bit_at(co2_ratings, i)
+    co2_ratings = [r for r in co2_ratings if r[i] != most_common_co2_bit]
+    if len(co2_ratings) <= 1:
+        break
 
 oxygen_rating = int(oxygen_ratings[0], 2)
 co2_rating = int(co2_ratings[0], 2)
