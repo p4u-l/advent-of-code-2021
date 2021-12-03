@@ -2,7 +2,7 @@ with open("day03/input.txt", "r", encoding="utf-8") as f:
     diagnostic_report = f.read().splitlines()
 
 
-def most_common_bit_at(bit_str, i):
+def most_common_bit_at(bit_str: [str], i: int) -> str:
     nums_at_i = [num[i] for num in bit_str]
     ones_at_i = nums_at_i.count("1")
 
