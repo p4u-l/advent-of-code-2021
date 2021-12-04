@@ -35,6 +35,8 @@ def rate_board(board: Board, drawn_numbers: set[int], last_drawn: int) -> int:
 
 def solve(boards: list[Board], order: list[int]):
     boards_that_won = set()
+    # Starting with 4 drawn numbers,
+    # because it is not possible to win with less.
     for i in range(4, len(order)):
         # Save drawn numbers of this round as a set,
         # for performance reasons.
