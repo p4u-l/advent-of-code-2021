@@ -1,6 +1,5 @@
 import re
 from collections import defaultdict
-from typing import overload
 from PIL import Image
 from matplotlib import cm
 
