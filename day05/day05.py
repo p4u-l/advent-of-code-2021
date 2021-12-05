@@ -9,12 +9,15 @@ with open("day05/input.txt", "r", encoding="utf-8") as f:
 
 def visualize(point_dict: dict) -> Image:
     max_overlap = max(point_dict.values())
-    colormap = cm.get_cmap("viridis", max_overlap + 1)
+    colormap = cm.get_cmap("plasma", max_overlap)
     img = Image.new("RGB", (1000, 1000), (0, 0, 0))
     pixels = img.load()
     for point, overlaps in point_dict.items():
         x, y = point
-        r, g, b = (int(colormap(overlaps)[i] * 255) for i in range(3))
+        # Points without overlaps should not be visualized.
+        if overlaps <= 1:
+            continue
+        r, g, b = (int(colormap(overlaps - 1)[i] * 255) for i in range(3))
         pixels[x, y] = (r, g, b)
     return img
 
