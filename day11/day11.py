@@ -56,7 +56,7 @@ class OctupusMap:
         return flashed_list
 
     def generate_image(self, upscale: int = 32) -> Image:
-        cmap = cm.get_cmap("plasma", self.flash_level)
+        cmap = cm.get_cmap("viridis", self.flash_level)
         colors = [
             tuple(int(c * 255) for c in cmap(i)[:3])
             for i in range(self.flash_level)
